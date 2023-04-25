@@ -22,17 +22,21 @@ const Home: NextPage = () => {
       bioRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const screenplayContext = "A story about a time-traveling detective."; // Replace this with the actual context you want to use
+;
+  const screenplayContext = "A story about a time-traveling detective." // Replace this with the actual context you want to use
   
-  const prompt = `Generate 2 ${vibe} screenplay ideas with clearly labeled "1." and "2.". ${
-      vibe === "Funny"
-        ? "Make sure there is humor and witty elements in the ideas."
-        : null
-    }
-        Make sure each generated idea is concise, contains a captivating premise, and is based on this context: ${screenplayContext}${
-      screenplayContext.slice(-1) === "." ? "" : "."
-    }`;
+  const prompt = `Generate 2 ${vibe} screenplay ideas with clearly labeled "1." and "2. Make sure to include anything from the user prompt that they ask for". ${
+    vibe === "Funny"
+      ? "Make sure there is humor and witty elements in the ideas."
+      : vibe === "Drama"
+      ? "Ensure the ideas have dramatic and emotional elements."
+      : vibe === "SciFi"
+      ? "Incorporate futuristic and imaginative elements into the ideas."
+      : ""
+  }
+  Make sure each generated idea is concise, contains a captivating premise, and is based on this context: ${bio}${bio.slice(-1) === "." ? "" : "."}`;
+  
+  
   
 
   const generateBio = async (e: any) => {
@@ -76,16 +80,16 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Twitter Bio Generator</title>
+        <title>Screenwriter</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
         <h1 className="sm:text-6xl text-4xl max-w-[708px] font-bold text-slate-900">
-          Generate your next Hollywood Blockbuster using chatGPT
+          Generate your next Hollywood Blockbuster
         </h1>
-        <p className="text-slate-500 mt-5">16,118 movies generated so far.</p>
+        <p className="text-slate-500 mt-5">69,420 movies generated so far.</p>
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3">
             <Image
@@ -151,7 +155,7 @@ const Home: NextPage = () => {
                   className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
                   ref={bioRef}
                 >
-                  Your generated bios
+                  your generated {vibe} movie, about {bio}
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">

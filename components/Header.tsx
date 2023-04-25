@@ -22,8 +22,8 @@ export default function Header() {
         rel="noreferrer"
       >
         <Image
-          alt="Vercel Icon"
-          src="/vercelLogo.png"
+          alt="Movie Icon"
+          src="/icons8-movie-30.png"
           className="sm:w-8 sm:h-[27px] w-8 h-[28px]"
           width={32}
           height={28}
